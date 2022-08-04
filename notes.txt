@@ -46,5 +46,19 @@ The rule of thumb for a mock is: if you are not going to add an assertion for so
 
 
 Repositories-Service-Controller pattern 
+*Breaks up the business layer of the app into three distinc layers
 
+--Repository Class--
+-Handles data into and out of our data store.
+-Is used in between service layer and model layer.
+-Example in UserRepository you would create methods that write/read a user to and from the database
 
+--Service Class--
+-It calls the repository class and can combine their data to form new, more complex business objects. 
+-It is an abstraction between the controller and the repository.
+-For example, the UserService would be responsible for performing the required logic in order to create a new user.
+
+--Controller--
+-Contains very little logic and is used to make calls to services.
+-Rarely make direct calls to the repositories unless there's a valid reason.
+-Controller will perform basic checks on the data returned from the services in order to send a response back to the client.
